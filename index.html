@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wayfinder — Build creative systems</title>
+<meta name="description" content="Wayfinder is a creative consulting studio in Haarlem for brand strategy and specialised AI systems. The company behind POP DROP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEEEEA; --ink:#1F1F21; --muted:#66665F; --brass:#A3803F; --rule:#1F1F21;
+  --font:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --pad:clamp(20px,4vw,48px);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#161617;--ink:#ECECE7;--muted:#9A9A92;--brass:#C9A866;--rule:#ECECE7}
+}
+:root[data-theme="dark"]{--paper:#161617;--ink:#ECECE7;--muted:#9A9A92;--brass:#C9A866;--rule:#ECECE7}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+img,svg{max-width:100%}
+.wrap{padding:0 var(--pad);max-width:1440px;margin:0 auto}
+
+/* header */
+header{display:flex;justify-content:space-between;align-items:center;padding-block:20px;border-bottom:1px solid var(--rule)}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"Syne",var(--font);font-weight:800;font-size:17px;letter-spacing:-.01em;text-transform:uppercase}
+.mark svg{width:34px;height:34px}
+nav{display:flex;gap:clamp(16px,3vw,40px);font-size:15px}
+nav a{text-decoration:none}
+nav a:hover{text-decoration:underline;text-underline-offset:4px}
+@media (max-width:640px){nav a:not(.keep){display:none}}
+
+/* hero */
+.wordmark{display:block;width:100%;height:auto;margin:clamp(24px,4vw,48px) 0 clamp(20px,3vw,36px)}
+.wordmark text{font-family:"Syne",var(--font);font-weight:800;fill:var(--ink)}
+.hero{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,5vw,80px);align-items:center;padding-bottom:clamp(56px,8vw,112px)}
+.sphere{aspect-ratio:1;width:100%;max-width:520px}
+.sphere .r{fill:none;stroke:var(--ink);stroke-width:1.4}
+.sphere .b{fill:none;stroke:var(--brass);stroke-width:3}
+.sphere .r{transition:stroke .5s,stroke-width .5s}
+.sphere .r.hit{stroke:var(--brass);stroke-width:2.4;transition:none}
+.sphere .b.hit{stroke-width:4.2;transition:none}
+.sphere .b{transition:stroke-width .5s}
+.sphere .tick{stroke:var(--ink);stroke-width:1;opacity:.45}
+.sphere .tick.major{opacity:.9;stroke-width:1.3}
+.sphere .vec{stroke:var(--ink);stroke-width:.8;stroke-dasharray:2 3;opacity:.55}
+.sphere .arc{fill:none;stroke:var(--brass);stroke-width:1.2;opacity:.8}
+.sphere .brg{font:600 10px var(--font);fill:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+h1{font-weight:850;font-stretch:118%;font-size:clamp(40px,5.6vw,84px);line-height:.95;letter-spacing:-.035em;margin:0 0 24px}
+.lede{font-size:clamp(18px,1.6vw,22px);max-width:34ch;margin:0 0 32px;color:var(--ink)}
+.btn{display:inline-block;padding:14px 22px;border:1.5px solid var(--ink);text-decoration:none;font-weight:600;font-size:16px;transition:background .15s,color .15s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.sphere{max-width:300px}}
+
+/* sections */
+section{border-top:1px solid var(--rule);padding-block:clamp(48px,7vw,96px)}
+h2{font-weight:800;font-stretch:118%;font-size:clamp(28px,3vw,40px);letter-spacing:-.025em;line-height:1;margin:0}
+.split{display:grid;grid-template-columns:4fr 8fr;gap:clamp(24px,5vw,80px)}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+.services{list-style:none;margin:0;padding:0}
+.services li{display:grid;grid-template-columns:minmax(200px,5fr) 7fr;gap:24px;padding:22px 0;border-bottom:1px solid color-mix(in srgb,var(--rule) 25%,transparent)}
+.services li:first-child{padding-top:0}
+.services h3{margin:0;font-size:20px;font-weight:700;font-stretch:108%;letter-spacing:-.01em}
+.services p{margin:0;color:var(--muted);max-width:52ch}
+@media (max-width:560px){.services li{grid-template-columns:1fr;gap:6px}}
+
+.venture{background:var(--ink);color:var(--paper);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:5fr 6fr;gap:clamp(28px,4vw,56px);align-items:center}
+.vtext .btn{margin-top:28px}
+.venture .name{font-weight:900;font-stretch:125%;font-size:clamp(48px,8vw,120px);line-height:.85;letter-spacing:-.04em;margin:0 0 20px}
+.venture p{margin:0;max-width:44ch}
+.venture .btn{border-color:var(--paper)}
+.venture .btn:hover{background:var(--paper);color:var(--ink)}
+@media (max-width:860px){.venture{grid-template-columns:1fr}}
+
+/* gallery */
+.gallery{--g-ink:var(--ink);--g-bg:var(--paper);margin-bottom:22px}
+.venture .gallery{--g-ink:var(--paper);--g-bg:var(--ink);margin:0}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border:1px solid color-mix(in srgb,var(--g-ink) 30%,transparent)}
+.track::-webkit-scrollbar{display:none}
+.shot{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:16/9;border:0;padding:0;margin:0;background:none;cursor:zoom-in;color:inherit;font:inherit;position:relative;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;line-height:1.4;letter-spacing:.04em;color:color-mix(in srgb,var(--g-ink) 60%,transparent);
+  background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--g-ink) 7%,transparent) 0 1px,transparent 1px 12px),color-mix(in srgb,var(--g-ink) 4%,var(--g-bg))}
+.shot:hover .ph{color:var(--g-ink)}
+.gnav{display:flex;align-items:center;justify-content:space-between;margin-top:10px;color:var(--g-ink)}
+.gnav button{background:none;border:0;color:inherit;font:inherit;font-size:18px;width:40px;height:32px;cursor:pointer}
+.gnav button:disabled{opacity:.25;cursor:default}
+.dots{display:flex;gap:8px}
+.dots i{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.25;transition:opacity .2s}
+.dots i.on{opacity:1;background:var(--brass)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:#0d0d0e;color:#ECECE7;display:none;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
+.lb.open{display:flex}
+.lb-top{display:flex;justify-content:space-between;align-items:center;font-size:14px;letter-spacing:.04em;min-height:44px}
+.lb-close{background:none;border:1px solid #ECECE7;color:inherit;font:inherit;padding:8px 14px;cursor:pointer}
+.lb-stage{flex:1;display:flex;align-items:center;gap:12px;min-height:0}
+.lb-view{flex:1;height:100%;display:flex;align-items:center;justify-content:center;min-width:0}
+.lb-view .frame{width:min(100%,calc((100vh - 160px) * 16 / 9));aspect-ratio:16/9;position:relative;border:1px solid rgba(236,236,231,.25)}
+.lb-view .frame img{width:100%;height:100%;object-fit:contain;display:block}
+.lb-view .ph{--g-ink:#ECECE7;--g-bg:#141415;font-size:16px}
+.lb-arrow{background:none;border:1px solid rgba(236,236,231,.4);color:inherit;font-size:22px;width:48px;height:48px;cursor:pointer;flex:none}
+.lb-arrow:hover{border-color:#ECECE7}
+@media (max-width:600px){.lb-arrow{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 20px)}.lb-prev{left:16px}.lb-next{right:16px}}
+.kicker{margin:0;color:var(--muted);max-width:52ch}
+#projects .head{margin-bottom:clamp(28px,4vw,48px);align-items:end}
+.tag{margin:0 0 14px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brass)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);border-left:1px solid var(--rule)}
+.card{padding:clamp(20px,2.4vw,32px);border:1px solid var(--rule);border-left:0;display:flex;flex-direction:column;transition:background .2s}
+.card:hover{background:color-mix(in srgb,var(--ink) 5%,transparent)}
+.card h3{margin:0 0 4px;font-weight:850;font-stretch:118%;font-size:clamp(26px,2.4vw,34px);letter-spacing:-.03em;line-height:1}
+.card .role{margin:0 0 18px;color:var(--muted);font-size:16px}
+.card p:last-child{margin:0;max-width:44ch}
+.card .watch{align-self:start;margin-top:18px;font-size:16px;font-weight:600;text-decoration:none;border-bottom:2px solid var(--brass);padding-bottom:2px}
+.card .watch:hover{color:var(--brass)}
+@media (max-width:760px){.cards{grid-template-columns:1fr;border-left:0}.card{border-left:1px solid var(--rule);border-top:0}.card:first-child{border-top:1px solid var(--rule)}}
+
+.prose p{margin:0 0 18px;max-width:60ch}
+.clients{color:var(--muted)}
+
+.contact h2{margin-bottom:28px}
+.mail{display:inline-block;font-weight:850;font-stretch:112%;font-size:clamp(28px,5.4vw,80px);letter-spacing:-.035em;line-height:1;text-decoration:none;border-bottom:3px solid var(--brass);padding-bottom:6px;word-break:break-word}
+.mail:hover{color:var(--brass)}
+
+footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="mark" href="#top" aria-label="Wayfinder home">
+    <!-- Placeholder mark: swap for the real logo SVG -->
+    <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M20 4 L24 20 L20 36 L16 20 Z" fill="currentColor"/><path d="M4 20 L20 17 L36 20 L20 23 Z" fill="currentColor" opacity=".45"/></svg>
+    Wayfinder
+  </a>
+  <nav aria-label="Main">
+    <a class="keep" href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#bootcamps">AI bootcamps</a>
+    <a href="#about">About</a>
+    <a class="keep" href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <svg class="wordmark" viewBox="0 0 1000 110" role="img" aria-label="Wayfinder">
+    <defs>
+      <mask id="horizon">
+        <rect x="-100" y="-100" width="3000" height="400" fill="#fff"/>
+        <rect x="-100" y="112" width="3000" height="6" fill="#000"/>
+      </mask>
+    </defs>
+    <!-- Horizon cut: one knockout line through the lower third of every letter. -->
+    <text x="0" y="138" font-size="170" letter-spacing="-6" mask="url(#horizon)">WAYFINDER</text>
+  </svg>
+
+  <div class="hero">
+    <svg class="sphere" viewBox="0 0 400 400" aria-hidden="true">
+      <circle class="r" cx="200" cy="200" r="190"/>
+      <g class="dial"></g>
+      <!-- Rings, orbiters and pulses are driven by the script below -->
+      <ellipse class="r ring" data-rx="190" data-ry="62"  data-tilt="-24" data-period="26"  data-dir="1"  cx="200" cy="200" rx="190" ry="62"/>
+      <ellipse class="b ring" data-rx="190" data-ry="118" data-tilt="38"  data-period="80"  data-dir="-1" cx="200" cy="200" rx="190" ry="118"/>
+      <ellipse class="r ring" data-rx="54"  data-ry="190" data-tilt="0"   data-period="44"  data-dir="1"  cx="200" cy="200" rx="54" ry="190"/>
+      <ellipse class="r ring" data-rx="190" data-ry="24"  data-tilt="64"  data-period="15"  data-dir="-1" cx="200" cy="200" rx="190" ry="24"/>
+      <line class="r axis" x1="200" y1="0" x2="200" y2="400"/>
+      <line class="vec" x1="200" y1="200" x2="200" y2="200"/>
+      <path class="arc" d=""/>
+      <text class="brg" x="200" y="140" text-anchor="middle"></text>
+      <g class="pulses"></g>
+      <g class="trail"></g>
+      <g class="orbs">
+        <!-- data-ring: which ring it rides; data-dir: 1 clockwise, -1 counter-clockwise; data-period: seconds per lap -->
+        <circle r="6"   fill="var(--brass)" data-ring="1" data-dir="1"  data-period="11" data-phase="0"/>
+        <circle r="3.5" fill="var(--ink)"   data-ring="1" data-dir="-1" data-period="15" data-phase="3.1"/>
+        <circle r="2.5" fill="var(--ink)"   data-ring="0" data-dir="-1" data-period="9"  data-phase="1.2"/>
+      </g>
+      <!-- Compass star at the core: stays still while the rings turn -->
+      <g class="star">
+        <circle cx="200" cy="200" r="20" fill="var(--paper)"/>
+        <path d="M200 166 L204 200 L200 234 L196 200 Z" fill="var(--ink)"/>
+        <path d="M180 200 L200 197 L220 200 L200 203 Z" fill="var(--ink)" opacity=".45"/>
+        <circle cx="200" cy="200" r="2.6" fill="var(--brass)"/>
+      </g>
+    </svg>
+
+    <div>
+      <h1>Build creative systems.</h1>
+      <p class="lede">Wayfinder is a creative consulting studio for brand strategy and specialised AI systems.</p>
+      <a class="btn" href="#contact">Let’s chat</a>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="split head">
+      <h2>Projects</h2>
+      <p class="kicker">A few things built, launched or led. Some are ours, some are for others.</p>
+    </div>
+
+    <div class="venture">
+      <div class="vtext">
+        <p class="tag">Wayfinder venture</p>
+        <p class="name">POP DROP</p>
+        <p>A novelty photo booth for events in the Netherlands. Guests step in, something unexpected happens, and everyone walks away with a print. Designed, branded and built end to end. Launching November&nbsp;2026.</p>
+        <a class="btn" href="https://popdrop.photos">Visit popdrop.photos</a>
+      </div>
+      <div class="gallery" data-name="POP DROP">
+        <div class="track">
+          <button class="shot" type="button" data-caption="POP DROP" aria-label="Enlarge POP DROP image 1">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">POP DROP<br>Image 1</span>
+          </button>
+          <button class="shot" type="button" data-caption="POP DROP" aria-label="Enlarge POP DROP image 2">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">POP DROP<br>Image 2</span>
+          </button>
+          <button class="shot" type="button" data-caption="POP DROP" aria-label="Enlarge POP DROP image 3">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">POP DROP<br>Image 3</span>
+          </button>
+        </div>
+        <div class="gnav">
+          <button class="prev" type="button" aria-label="Previous image">←</button>
+          <span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+          <button class="next" type="button" aria-label="Next image">→</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="gallery" data-name="NUFF SPACE Storage">
+        <div class="track">
+          <button class="shot" type="button" data-caption="NUFF SPACE Storage" aria-label="Enlarge NUFF SPACE image 1">
+            <img src="img/nuffspace-1.webp" alt="Desmond leans out from behind a pillar holding a NUFF SPACE box, in an endless office floor." loading="lazy" width="1600" height="900">
+          </button>
+          <button class="shot" type="button" data-caption="NUFF SPACE Storage" aria-label="Enlarge NUFF SPACE image 2">
+            <img src="img/nuffspace-2.webp" alt="Desmond walks a corridor of pink and teal roller doors sprayed with the NUFF SPACE name." loading="lazy" width="1600" height="900">
+          </button>
+          <button class="shot" type="button" data-caption="NUFF SPACE Storage" aria-label="Enlarge NUFF SPACE image 3">
+            <img src="img/nuffspace-3.webp" alt="Desmond stands beside a tower of boxes in a vast warehouse of storage units." loading="lazy" width="1600" height="900">
+          </button>
+        </div>
+        <div class="gnav">
+          <button class="prev" type="button" aria-label="Previous image">←</button>
+          <span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+          <button class="next" type="button" aria-label="Next image">→</button>
+        </div>
+      </div>
+        <p class="tag">Wayfinder project</p>
+        <h3>NUFF SPACE Storage</h3>
+        <p class="role">Concept, jingle, direction, AI production and edit</p>
+        <p>A fake 1998 local TV ad for a storage company that found infinite space, made solo in nine days for ElevenLabs&rsquo; World&rsquo;s Catchiest Ad competition. The dancehall jingle came first and became the shot list: every scene was generated to the timing of the track, then graded to one look. 43 seconds, one salesman, no exits.</p>
+        <a class="watch" href="https://www.youtube.com/watch?v=qm42ERJll4E" target="_blank" rel="noopener">Watch the ad</a>
+      </article>
+      <article class="card">
+        <div class="gallery" data-name="Landal">
+        <div class="track">
+          <button class="shot" type="button" data-caption="Landal" aria-label="Enlarge Landal image 1">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">Landal<br>Image 1</span>
+          </button>
+          <button class="shot" type="button" data-caption="Landal" aria-label="Enlarge Landal image 2">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">Landal<br>Image 2</span>
+          </button>
+          <button class="shot" type="button" data-caption="Landal" aria-label="Enlarge Landal image 3">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">Landal<br>Image 3</span>
+          </button>
+        </div>
+        <div class="gnav">
+          <button class="prev" type="button" aria-label="Previous image">←</button>
+          <span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+          <button class="next" type="button" aria-label="Next image">→</button>
+        </div>
+      </div>
+        <p class="tag">In-house</p>
+        <h3>Landal</h3>
+        <p class="role">AI Brand Strategy Lead</p>
+        <p>An AI image and video production pipeline for campaigns across NL, DE and FR, a campaign tool that checks copy against the brand before it ships, and an audit of how AI assistants describe the brand.</p>
+      </article>
+      <article class="card">
+        <div class="gallery" data-name="Springboards.ai">
+        <div class="track">
+          <button class="shot" type="button" data-caption="Springboards.ai" aria-label="Enlarge Springboards.ai image 1">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">Springboards.ai<br>Image 1</span>
+          </button>
+          <button class="shot" type="button" data-caption="Springboards.ai" aria-label="Enlarge Springboards.ai image 2">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">Springboards.ai<br>Image 2</span>
+          </button>
+          <button class="shot" type="button" data-caption="Springboards.ai" aria-label="Enlarge Springboards.ai image 3">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">Springboards.ai<br>Image 3</span>
+          </button>
+        </div>
+        <div class="gnav">
+          <button class="prev" type="button" aria-label="Previous image">←</button>
+          <span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+          <button class="next" type="button" aria-label="Next image">→</button>
+        </div>
+      </div>
+        <p class="tag">[Client / role]</p>
+        <h3>Springboards.ai</h3>
+        <p class="role">[Your role]</p>
+        <p>[What you did.] Springboards builds AI tools that help agency and brand teams generate and push ideas further.</p>
+      </article>
+      <article class="card">
+        <div class="gallery" data-name="Foundation Devices">
+        <div class="track">
+          <button class="shot" type="button" data-caption="Foundation Devices" aria-label="Enlarge Foundation Devices image 1">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">Foundation Devices<br>Image 1</span>
+          </button>
+          <button class="shot" type="button" data-caption="Foundation Devices" aria-label="Enlarge Foundation Devices image 2">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">Foundation Devices<br>Image 2</span>
+          </button>
+          <button class="shot" type="button" data-caption="Foundation Devices" aria-label="Enlarge Foundation Devices image 3">
+            <!-- Replace the span with: <img src="..." alt="..."> -->
+            <span class="ph">Foundation Devices<br>Image 3</span>
+          </button>
+        </div>
+        <div class="gnav">
+          <button class="prev" type="button" aria-label="Previous image">←</button>
+          <span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+          <button class="next" type="button" aria-label="Next image">→</button>
+        </div>
+      </div>
+        <p class="tag">[Client / role]</p>
+        <h3>Foundation Devices</h3>
+        <p class="role">[Your role]</p>
+        <p>[What you did.] Foundation makes open-source Bitcoin hardware, including the Passport wallet and the Envoy app.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="services" class="split">
+    <h2>What we do</h2>
+    <ul class="services">
+      <li><h3>Brand &amp; innovation strategy</h3><p>Positioning, naming and new-product thinking, sharpened with the research speed AI makes possible.</p></li>
+      <li><h3>Media planning</h3><p>Where the budget goes and why, planned across paid, owned and social.</p></li>
+      <li><h3>Automation &amp; generative AI</h3><p>Content pipelines, image and video workflows, and internal tools that give your team real hours back.</p></li>
+      <li><h3>CX &amp; UX design</h3><p>Journeys, interfaces and service flows that make a brand easy to use.</p></li>
+    </ul>
+  </section>
+
+
+  <section id="bootcamps" class="split">
+    <h2>AI bootcamps</h2>
+    <div class="prose">
+      <p>Hands-on sessions for marketing and creative teams. One or two days, built around your own briefs, using tools you’ll still be using on Monday.</p>
+      <a class="btn" href="mailto:hello@wayfinderconsult.xyz?subject=AI%20bootcamp">Ask about a bootcamp</a>
+    </div>
+  </section>
+
+  <section id="about" class="split">
+    <h2>About</h2>
+    <div class="prose">
+      <p>Wayfinder was founded in 2023 by Matthew Rose, a brand strategist with more than twelve years across WPP, Publicis Groupe and Omnicom agencies and in-house roles in tech, leisure and hospitality.</p>
+      <p class="clients">Past clients include McDonald’s, Alibaba / HEMA, Disney, Samsung, adidas and Philips.</p>
+      <p>Projects are staffed from a network of strategists, designers, copywriters and AI builders, sized to the job.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Tell us what you’re working on.</h2>
+    <a class="mail" href="mailto:hello@wayfinderconsult.xyz">hello@wayfinderconsult.xyz</a>
+  </section>
+</main>
+
+<div class="lb" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+  <div class="lb-top"><span class="lb-cap"></span><button class="lb-close" type="button">Close</button></div>
+  <div class="lb-stage">
+    <button class="lb-arrow lb-prev" type="button" aria-label="Previous image">←</button>
+    <div class="lb-view"><div class="frame"></div></div>
+    <button class="lb-arrow lb-next" type="button" aria-label="Next image">→</button>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Wayfinder Consulting, Haarlem</span>
+  <span>KvK 00000000</span>
+</footer>
+
+</div>
+<script>
+(function(){
+  function fit(){
+    var s=document.querySelector('.wordmark'), t=s&&s.querySelector('text');
+    if(!t) return;
+    var b=t.getBBox(), cap=170*0.62;
+    s.setAttribute('viewBox', (b.x-2)+' '+(138-cap)+' '+(b.width+22)+' '+(cap+4));
+  }
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(fit);
+})();
+</script>
+<script>
+(function(){
+  // Inline carousels
+  document.querySelectorAll('.gallery').forEach(function(g){
+    var track=g.querySelector('.track'), shots=[].slice.call(g.querySelectorAll('.shot')),
+        dots=g.querySelectorAll('.dots i'), prev=g.querySelector('.prev'), next=g.querySelector('.next');
+    function idx(){return Math.round(track.scrollLeft/track.clientWidth)}
+    function sync(){var i=idx();dots.forEach(function(d,k){d.classList.toggle('on',k===i)});prev.disabled=i===0;next.disabled=i===shots.length-1}
+    function go(i){track.scrollTo({left:i*track.clientWidth,behavior:'smooth'})}
+    prev.onclick=function(){go(idx()-1)}; next.onclick=function(){go(idx()+1)};
+    track.addEventListener('scroll',function(){window.requestAnimationFrame(sync)},{passive:true});
+    shots.forEach(function(s,i){s.onclick=function(){openLB(shots,i,s)}});
+    sync();
+  });
+
+  // Lightbox
+  var lb=document.querySelector('.lb'), frame=lb.querySelector('.frame'), cap=lb.querySelector('.lb-cap'),
+      items=[], cur=0, opener=null, sx=null;
+  function render(){
+    var s=items[cur]; frame.innerHTML='';
+    var img=s.querySelector('img');
+    frame.appendChild((img||s.querySelector('.ph')).cloneNode(true));
+    cap.textContent=s.dataset.caption+'  \u00b7  '+(cur+1)+' / '+items.length;
+  }
+  function openLB(list,i,from){items=list;cur=i;opener=from;render();lb.hidden=false;lb.classList.add('open');document.body.style.overflow='hidden';lb.querySelector('.lb-close').focus()}
+  function close(){lb.classList.remove('open');lb.hidden=true;document.body.style.overflow='';if(opener)opener.focus()}
+  function step(d){cur=(cur+d+items.length)%items.length;render()}
+  window.openLB=openLB;
+  lb.querySelector('.lb-close').onclick=close;
+  lb.querySelector('.lb-prev').onclick=function(){step(-1)};
+  lb.querySelector('.lb-next').onclick=function(){step(1)};
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-view')||e.target.classList.contains('lb-stage'))close()});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close(); else if(e.key==='ArrowRight')step(1); else if(e.key==='ArrowLeft')step(-1);});
+  lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)step(dx<0?1:-1);sx=null});
+})();
+</script>
+<script>
+/* Orrery engine: rings turn at their own rates; orbiters ride the brass ring.
+   When an orbiter crosses another ring or the meridian, a pulse ripples out
+   and the crossed line flashes. A bearing vector tracks the lead orbiter. */
+(function(){
+  var svg=document.querySelector('.sphere'); if(!svg) return;
+  var NS='http://www.w3.org/2000/svg', C=200, TAU=Math.PI*2, D2R=Math.PI/180;
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+
+  // Dial graduations: every 5 degrees, major every 30
+  var dial=svg.querySelector('.dial');
+  for(var d=0;d<360;d+=5){var maj=d%30===0,a=d*D2R,r1=190,r2=maj?179:185;
+    el('line',{'class':'tick'+(maj?' major':''),x1:C+r1*Math.sin(a),y1:C-r1*Math.cos(a),x2:C+r2*Math.sin(a),y2:C-r2*Math.cos(a)},dial)}
+
+  var rings=[].map.call(svg.querySelectorAll('.ring'),function(e){return{e:e,rx:+e.dataset.rx,ry:+e.dataset.ry,tilt:+e.dataset.tilt,per:+e.dataset.period,dir:+e.dataset.dir,ang:0}});
+  var AXIS_PERIOD=50;
+  var orbs=[].map.call(svg.querySelectorAll('.orbs circle'),function(e,i){return{e:e,ring:rings[+e.dataset.ring],dir:+e.dataset.dir,per:+e.dataset.period,ph:+e.dataset.phase,r:+e.getAttribute('r'),lead:i===0,side:[],near:{}}});
+  var axis=svg.querySelector('.axis'), vec=svg.querySelector('.vec'), arc=svg.querySelector('.arc'), brg=svg.querySelector('.brg');
+  var pulses=svg.querySelector('.pulses'), trailG=svg.querySelector('.trail'), live=[];
+  var trail=[]; for(var i=0;i<6;i++) trail.push(el('circle',{r:(4.2-i*.55).toFixed(2),fill:'var(--brass)',opacity:(.42-i*.065).toFixed(2)},trailG));
+
+  function onRing(rg,t){var a=rg.ang*D2R,x=rg.rx*Math.cos(t),y=rg.ry*Math.sin(t);
+    return{x:C+x*Math.cos(a)-y*Math.sin(a),y:C+x*Math.sin(a)+y*Math.cos(a)}}
+  function level(rg,p){var a=-rg.ang*D2R,dx=p.x-C,dy=p.y-C,lx=dx*Math.cos(a)-dy*Math.sin(a),ly=dx*Math.sin(a)+dy*Math.cos(a);
+    return (lx*lx)/(rg.rx*rg.rx)+(ly*ly)/(rg.ry*rg.ry)-1}
+  function flash(e){e.classList.add('hit');setTimeout(function(){e.classList.remove('hit')},60)}
+  function pulse(p,big,now){
+    var c=el('circle',{cx:p.x,cy:p.y,r:0,fill:'none',stroke:big?'var(--brass)':'var(--ink)','stroke-width':big?1.4:1},pulses);
+    live.push({e:c,t0:now,max:big?24:14,dur:big?1100:800});
+    if(big){var c2=el('circle',{cx:p.x,cy:p.y,r:0,fill:'none',stroke:'var(--brass)','stroke-width':.8},pulses);live.push({e:c2,t0:now+140,max:34,dur:1300})}
+  }
+
+  function frame(now){
+    var t=now/1000;
+    rings.forEach(function(rg){rg.ang=rg.tilt+rg.dir*360*t/rg.per;rg.e.setAttribute('transform','rotate('+rg.ang.toFixed(3)+' '+C+' '+C+')')});
+    // the meridian beam turns slowly clockwise
+    var axAng=360*t/AXIS_PERIOD, axR=axAng*D2R, ux=Math.sin(axR), uy=-Math.cos(axR);
+    axis.setAttribute('transform','rotate('+axAng.toFixed(3)+' '+C+' '+C+')');
+    orbs.forEach(function(o){
+      var carrier=o.ring, th=o.dir*(TAU*t/o.per)+o.ph, p=onRing(carrier,th); o.p=p;
+      o.e.setAttribute('cx',p.x.toFixed(2));o.e.setAttribute('cy',p.y.toFixed(2));
+      // crossings with the other rings
+      rings.forEach(function(rg,k){if(rg===carrier)return;var s=level(rg,p)>0;
+        if(o.side[k]!==undefined&&o.side[k]!==s&&!reduce){pulse(p,o.lead,now);flash(rg.e);if(o.lead)flash(carrier.e)}o.side[k]=s});
+      // crossings with the meridian
+      var sx=((p.x-C)*uy-(p.y-C)*ux)>0; if(o.sx!==undefined&&o.sx!==sx&&!reduce){pulse(p,false,now);flash(axis)} o.sx=sx;
+      if(o.lead){
+        for(var i=0;i<trail.length;i++){var q=onRing(carrier,th-o.dir*(i+1)*.045);trail[i].setAttribute('cx',q.x.toFixed(2));trail[i].setAttribute('cy',q.y.toFixed(2))}
+        vec.setAttribute('x2',p.x.toFixed(2));vec.setAttribute('y2',p.y.toFixed(2));
+        var b=(Math.atan2(p.x-C,-(p.y-C))/D2R+360)%360, R=46, br=b*D2R;
+        arc.setAttribute('d','M'+C+' '+(C-R)+' A'+R+' '+R+' 0 '+(b>180?1:0)+' 1 '+(C+R*Math.sin(br)).toFixed(2)+' '+(C-R*Math.cos(br)).toFixed(2));
+        var lr=R+14, lb=(b/2)*D2R; if(b>180) lb=(b/2)*D2R;
+        brg.setAttribute('x',(C+lr*Math.sin(lb)).toFixed(1));brg.setAttribute('y',(C-lr*Math.cos(lb)+3).toFixed(1));
+        brg.textContent=('00'+Math.round(b)).slice(-3)+'\u00b0';
+      }
+    });
+    // orbiters meeting head-on: a larger shared pulse at the midpoint
+    for(var a=0;a<orbs.length;a++)for(var c=a+1;c<orbs.length;c++){var A=orbs[a],B=orbs[c],dx=A.p.x-B.p.x,dy=A.p.y-B.p.y,nr=Math.sqrt(dx*dx+dy*dy)<A.r+B.r+3;
+      if(nr&&!A.near[c]&&!reduce){var m={x:(A.p.x+B.p.x)/2,y:(A.p.y+B.p.y)/2};pulse(m,true,now);pulse(m,false,now+220)}A.near[c]=nr}
+    // animate pulses
+    for(var j=live.length-1;j>=0;j--){var L=live[j],k=(now-L.t0)/L.dur;
+      if(k<0){L.e.setAttribute('opacity',0);continue}
+      if(k>=1){L.e.remove();live.splice(j,1);continue}
+      var ease=1-Math.pow(1-k,3);L.e.setAttribute('r',(L.max*ease).toFixed(2));L.e.setAttribute('opacity',(0.9*(1-k)).toFixed(3))}
+    if(running) raf=requestAnimationFrame(frame);
+  }
+
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var running=false, raf=0;
+  if(reduce){frame(12000);return}
+  function start(){if(!running){running=true;raf=requestAnimationFrame(frame)}}
+  function stop(){running=false;cancelAnimationFrame(raf)}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es[0].isIntersecting?start():stop()}).observe(svg)}else start();
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start()});
+})();
+</script>
+</body>
+</html>
