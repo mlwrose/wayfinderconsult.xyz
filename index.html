@@ -37,6 +37,29 @@ nav{display:flex;gap:clamp(16px,3vw,40px);font-size:15px}
 nav a{text-decoration:none}
 nav a:hover{text-decoration:underline;text-underline-offset:4px}
 @media (max-width:640px){nav a:not(.keep){display:none}}
+.hdr-right{display:flex;align-items:center;gap:clamp(16px,3vw,40px)}
+.tools{display:flex;align-items:center;gap:14px;padding-left:clamp(4px,2vw,20px);border-left:1px solid color-mix(in srgb,var(--rule) 25%,transparent)}
+.lang{display:flex;align-items:center;gap:2px;font-size:13px;font-weight:600;letter-spacing:.06em}
+.lang button{background:none;border:0;padding:3px 2px;color:var(--muted);font:inherit;cursor:pointer}
+.lang button.on{color:var(--ink);border-bottom:2px solid var(--brass)}
+.lang span{color:color-mix(in srgb,var(--muted) 50%,transparent)}
+.theme{background:none;border:0;padding:4px;color:var(--ink);cursor:pointer;display:flex;line-height:0}
+.theme svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+.theme:hover{color:var(--brass)}
+.ico-sun{display:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .ico-sun{display:block}
+  :root:not([data-theme="light"]) .ico-moon{display:none}
+}
+:root[data-theme="dark"] .ico-sun{display:block}
+:root[data-theme="dark"] .ico-moon{display:none}
+@media (max-width:640px){
+  .mark{font-size:0;gap:0}
+  .hdr-right{gap:16px}
+  nav{gap:16px}
+  .tools{gap:12px;padding-left:12px}
+}
+@media (max-width:420px){.tools{gap:10px}}
 
 /* hero */
 .wordmark{display:block;width:100%;height:auto;margin:clamp(24px,4vw,48px) 0 clamp(20px,3vw,36px)}
@@ -147,13 +170,24 @@ footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;fle
     <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M20 4 L24 20 L20 36 L16 20 Z" fill="currentColor"/><path d="M4 20 L20 17 L36 20 L20 23 Z" fill="currentColor" opacity=".45"/></svg>
     Wayfinder
   </a>
+  <div class="hdr-right">
   <nav aria-label="Main">
-    <a class="keep" href="#projects">Projects</a>
-    <a href="#services">Services</a>
-    <a href="#bootcamps">AI bootcamps</a>
-    <a href="#about">About</a>
+    <a class="keep" href="#projects" data-nl="Projecten">Projects</a>
+    <a href="#services" data-nl="Diensten">Services</a>
+    <a href="#bootcamps" data-nl="AI-bootcamps">AI bootcamps</a>
+    <a href="#about" data-nl="Over">About</a>
     <a class="keep" href="#contact">Contact</a>
   </nav>
+  <div class="tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="on">EN</button><span>/</span><button type="button" data-lang="nl">NL</button>
+    </div>
+    <button class="theme" type="button" aria-label="Switch colour theme">
+      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></svg>
+    </button>
+  </div>
+  </div>
 </header>
 
 <main id="top">
@@ -199,27 +233,27 @@ footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;fle
     </svg>
 
     <div>
-      <h1>Build creative systems.</h1>
-      <p class="lede">Wayfinder is a creative consulting studio for brand strategy and specialised AI systems.</p>
-      <a class="btn" href="#contact">Let’s chat</a>
+      <h1 data-nl="Bouw creatieve systemen.">Build creative systems.</h1>
+      <p class="lede" data-nl="Wayfinder is een creatief adviesbureau voor merkstrategie en gespecialiseerde AI-systemen.">Wayfinder is a creative consulting studio for brand strategy and specialised AI systems.</p>
+      <a class="btn" href="#contact" data-nl="Even sparren">Let’s chat</a>
     </div>
   </div>
 
   <section id="projects">
     <div class="split head">
-      <h2>Projects</h2>
-      <p class="kicker">A few things built, launched or led. Some are ours, some are for others.</p>
+      <h2 data-nl="Projecten">Projects</h2>
+      <p class="kicker" data-nl="Een paar dingen die we hebben gebouwd, gelanceerd of geleid. Sommige zijn van onszelf, andere voor klanten.">A few things built, launched or led. Some are ours, some are for others.</p>
     </div>
 
     <div class="venture">
       <div class="vtext">
-        <p class="tag">Wayfinder venture</p>
+        <p class="tag" data-nl="Wayfinder-venture">Wayfinder venture</p>
         <p class="name">POP DROP</p>
-        <p>A novelty photo booth for events in the Netherlands. Guests step in, the booth remixes them into something they weren&rsquo;t expecting, and a print drops out seconds later. No operator in the room.</p>
-        <p>Built end to end as a Wayfinder venture: the name and brand, the cabinet, the generative pipeline that runs it, and the booking side behind it. Launching November&nbsp;2026.</p>
+        <p data-nl="Een eigenzinnige photobooth voor events in Nederland. Gasten stappen naar binnen, de booth remixt ze tot iets wat ze niet zagen aankomen, en seconden later rolt er een print uit. Zonder operator in de ruimte.">A novelty photo booth for events in the Netherlands. Guests step in, the booth remixes them into something they weren&rsquo;t expecting, and a print drops out seconds later. No operator in the room.</p>
+        <p data-nl="Van begin tot eind gebouwd als Wayfinder-venture: de naam en het merk, de kast, de generatieve pipeline die erachter draait en de boekingskant eromheen. Lancering in november&nbsp;2026.">Built end to end as a Wayfinder venture: the name and brand, the cabinet, the generative pipeline that runs it, and the booking side behind it. Launching November&nbsp;2026.</p>
         <div class="vlinks">
-          <a class="btn" href="https://popdrop.photos">Visit popdrop.photos</a>
-          <a class="ig" href="https://www.instagram.com/popdrop.photos/" target="_blank" rel="noopener">Follow on Instagram</a>
+          <a class="btn" href="https://popdrop.photos" data-nl="Bekijk popdrop.photos">Visit popdrop.photos</a>
+          <a class="ig" href="https://www.instagram.com/popdrop.photos/" target="_blank" rel="noopener" data-nl="Volg op Instagram">Follow on Instagram</a>
         </div>
       </div>
       <div class="gallery" data-name="POP DROP" style="--ar:4/5">
@@ -262,26 +296,26 @@ footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;fle
           <button class="next" type="button" aria-label="Next image">→</button>
         </div>
       </div>
-        <p class="tag">Wayfinder project</p>
+        <p class="tag" data-nl="Wayfinder-project">Wayfinder project</p>
         <h3>NUFF SPACE Storage</h3>
-        <p class="role">Concept, jingle, direction, AI production and edit</p>
-        <p>A fake 1998 local TV ad for a storage company that found infinite space, made solo in nine days for ElevenLabs&rsquo; World&rsquo;s Catchiest Ad competition. The dancehall jingle came first and became the shot list: every scene was generated to the timing of the track, then graded to one look. 43 seconds, one salesman, no exits.</p>
-        <a class="watch" href="https://www.youtube.com/watch?v=qm42ERJll4E" target="_blank" rel="noopener">Watch the ad</a>
+        <p class="role" data-nl="Concept, jingle, regie, AI-productie en montage">Concept, jingle, direction, AI production and edit</p>
+        <p data-nl="Een nep-tv-reclame uit 1998 voor een opslagbedrijf met oneindig veel ruimte, in negen dagen in zijn eentje gemaakt voor de World&rsquo;s Catchiest Ad-competitie van ElevenLabs. De dancehall-jingle kwam eerst en werd de shotlist: elke scène is op de timing van de track gegenereerd en daarna naar één beeldlook gekleurd. 43 seconden, één verkoper, geen uitgang.">A fake 1998 local TV ad for a storage company that found infinite space, made solo in nine days for ElevenLabs&rsquo; World&rsquo;s Catchiest Ad competition. The dancehall jingle came first and became the shot list: every scene was generated to the timing of the track, then graded to one look. 43 seconds, one salesman, no exits.</p>
+        <a class="watch" href="https://www.youtube.com/watch?v=qm42ERJll4E" target="_blank" rel="noopener" data-nl="Bekijk de reclame">Watch the ad</a>
       </article>
       <article class="card">
         <div class="gallery" data-name="Landal">
         <div class="track">
           <button class="shot" type="button" data-caption="Landal" aria-label="Enlarge Landal image 1">
             <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">Landal<br>Image 1</span>
+            <span class="ph" data-nl="Landal<br>Beeld 1">Landal<br>Image 1</span>
           </button>
           <button class="shot" type="button" data-caption="Landal" aria-label="Enlarge Landal image 2">
             <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">Landal<br>Image 2</span>
+            <span class="ph" data-nl="Landal<br>Beeld 2">Landal<br>Image 2</span>
           </button>
           <button class="shot" type="button" data-caption="Landal" aria-label="Enlarge Landal image 3">
             <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">Landal<br>Image 3</span>
+            <span class="ph" data-nl="Landal<br>Beeld 3">Landal<br>Image 3</span>
           </button>
         </div>
         <div class="gnav">
@@ -290,25 +324,25 @@ footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;fle
           <button class="next" type="button" aria-label="Next image">→</button>
         </div>
       </div>
-        <p class="tag">In-house</p>
+        <p class="tag" data-nl="In-house">In-house</p>
         <h3>Landal</h3>
         <p class="role">AI Brand Strategy Lead</p>
-        <p>An AI image and video production pipeline for campaigns across NL, DE and FR, a campaign tool that checks copy against the brand before it ships, and an audit of how AI assistants describe the brand.</p>
+        <p data-nl="Een AI-pipeline voor beeld- en videoproductie voor campagnes in NL, DE en FR, een campagnetool die teksten vóór publicatie tegen het merk toetst, en een audit van hoe AI-assistenten het merk beschrijven.">An AI image and video production pipeline for campaigns across NL, DE and FR, a campaign tool that checks copy against the brand before it ships, and an audit of how AI assistants describe the brand.</p>
       </article>
       <article class="card">
         <div class="gallery" data-name="Springboards.ai">
         <div class="track">
           <button class="shot" type="button" data-caption="Springboards.ai" aria-label="Enlarge Springboards.ai image 1">
             <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">Springboards.ai<br>Image 1</span>
+            <span class="ph" data-nl="Springboards.ai<br>Beeld 1">Springboards.ai<br>Image 1</span>
           </button>
           <button class="shot" type="button" data-caption="Springboards.ai" aria-label="Enlarge Springboards.ai image 2">
             <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">Springboards.ai<br>Image 2</span>
+            <span class="ph" data-nl="Springboards.ai<br>Beeld 2">Springboards.ai<br>Image 2</span>
           </button>
           <button class="shot" type="button" data-caption="Springboards.ai" aria-label="Enlarge Springboards.ai image 3">
             <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">Springboards.ai<br>Image 3</span>
+            <span class="ph" data-nl="Springboards.ai<br>Beeld 3">Springboards.ai<br>Image 3</span>
           </button>
         </div>
         <div class="gnav">
@@ -317,25 +351,25 @@ footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;fle
           <button class="next" type="button" aria-label="Next image">→</button>
         </div>
       </div>
-        <p class="tag">[Client / role]</p>
+        <p class="tag" data-nl="[Klant / rol]">[Client / role]</p>
         <h3>Springboards.ai</h3>
-        <p class="role">[Your role]</p>
-        <p>[What you did.] Springboards builds AI tools that help agency and brand teams generate and push ideas further.</p>
+        <p class="role" data-nl="[Jouw rol]">[Your role]</p>
+        <p data-nl="[Wat je hebt gedaan.] Springboards maakt AI-tools waarmee bureau- en merkteams ideeën genereren en verder brengen.">[What you did.] Springboards builds AI tools that help agency and brand teams generate and push ideas further.</p>
       </article>
       <article class="card">
         <div class="gallery" data-name="Foundation Devices">
         <div class="track">
           <button class="shot" type="button" data-caption="Foundation Devices" aria-label="Enlarge Foundation Devices image 1">
             <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">Foundation Devices<br>Image 1</span>
+            <span class="ph" data-nl="Foundation Devices<br>Beeld 1">Foundation Devices<br>Image 1</span>
           </button>
           <button class="shot" type="button" data-caption="Foundation Devices" aria-label="Enlarge Foundation Devices image 2">
             <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">Foundation Devices<br>Image 2</span>
+            <span class="ph" data-nl="Foundation Devices<br>Beeld 2">Foundation Devices<br>Image 2</span>
           </button>
           <button class="shot" type="button" data-caption="Foundation Devices" aria-label="Enlarge Foundation Devices image 3">
             <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">Foundation Devices<br>Image 3</span>
+            <span class="ph" data-nl="Foundation Devices<br>Beeld 3">Foundation Devices<br>Image 3</span>
           </button>
         </div>
         <div class="gnav">
@@ -344,44 +378,44 @@ footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;fle
           <button class="next" type="button" aria-label="Next image">→</button>
         </div>
       </div>
-        <p class="tag">[Client / role]</p>
+        <p class="tag" data-nl="[Klant / rol]">[Client / role]</p>
         <h3>Foundation Devices</h3>
-        <p class="role">[Your role]</p>
-        <p>[What you did.] Foundation makes open-source Bitcoin hardware, including the Passport wallet and the Envoy app.</p>
+        <p class="role" data-nl="[Jouw rol]">[Your role]</p>
+        <p data-nl="[Wat je hebt gedaan.] Foundation maakt open-source bitcoinhardware, waaronder de Passport-wallet en de Envoy-app.">[What you did.] Foundation makes open-source Bitcoin hardware, including the Passport wallet and the Envoy app.</p>
       </article>
     </div>
   </section>
 
   <section id="services" class="split">
-    <h2>What we do</h2>
+    <h2 data-nl="Wat we doen">What we do</h2>
     <ul class="services">
-      <li><h3>Brand &amp; innovation strategy</h3><p>Positioning, naming and new-product thinking, sharpened with the research speed AI makes possible.</p></li>
-      <li><h3>Media planning</h3><p>Where the budget goes and why, planned across paid, owned and social.</p></li>
-      <li><h3>Automation &amp; generative AI</h3><p>Content pipelines, image and video workflows, and internal tools that give your team real hours back.</p></li>
-      <li><h3>CX &amp; UX design</h3><p>Journeys, interfaces and service flows that make a brand easy to use.</p></li>
+      <li><h3 data-nl="Merk- en innovatiestrategie">Brand &amp; innovation strategy</h3><p data-nl="Positionering, naamgeving en nieuwe proposities, aangescherpt met de onderzoekssnelheid die AI mogelijk maakt.">Positioning, naming and new-product thinking, sharpened with the research speed AI makes possible.</p></li>
+      <li><h3 data-nl="Mediaplanning">Media planning</h3><p data-nl="Waar het budget heen gaat en waarom, gepland over paid, owned en social.">Where the budget goes and why, planned across paid, owned and social.</p></li>
+      <li><h3 data-nl="Automatisering en generatieve AI">Automation &amp; generative AI</h3><p data-nl="Contentpipelines, beeld- en videoworkflows en interne tools die je team echt uren teruggeven.">Content pipelines, image and video workflows, and internal tools that give your team real hours back.</p></li>
+      <li><h3 data-nl="CX- en UX-design">CX &amp; UX design</h3><p data-nl="Journeys, interfaces en serviceflows die een merk makkelijk in gebruik maken.">Journeys, interfaces and service flows that make a brand easy to use.</p></li>
     </ul>
   </section>
 
 
   <section id="bootcamps" class="split">
-    <h2>AI bootcamps</h2>
+    <h2 data-nl="AI-bootcamps">AI bootcamps</h2>
     <div class="prose">
-      <p>Hands-on sessions for marketing and creative teams. One or two days, built around your own briefs, using tools you’ll still be using on Monday.</p>
-      <a class="btn" href="mailto:hello@wayfinderconsult.xyz?subject=AI%20bootcamp">Ask about a bootcamp</a>
+      <p data-nl="Praktische sessies voor marketing- en creatieteams. Eén of twee dagen, opgebouwd rond je eigen briefings, met tools die je maandag nog steeds gebruikt.">Hands-on sessions for marketing and creative teams. One or two days, built around your own briefs, using tools you’ll still be using on Monday.</p>
+      <a class="btn" href="mailto:hello@wayfinderconsult.xyz?subject=AI%20bootcamp" data-nl="Vraag een bootcamp aan">Ask about a bootcamp</a>
     </div>
   </section>
 
   <section id="about" class="split">
-    <h2>About</h2>
+    <h2 data-nl="Over">About</h2>
     <div class="prose">
-      <p>Wayfinder was founded in 2023 by Matthew Rose, a brand strategist with more than twelve years across WPP, Publicis Groupe and Omnicom agencies and in-house roles in tech, leisure and hospitality.</p>
-      <p class="clients">Past clients include McDonald’s, Alibaba / HEMA, Disney, Samsung, adidas and Philips.</p>
-      <p>Projects are staffed from a network of strategists, designers, copywriters and AI builders, sized to the job.</p>
+      <p data-nl="Wayfinder is in 2023 opgericht door Matthew Rose, merkstrateeg met ruim twaalf jaar ervaring bij bureaus van WPP, Publicis Groupe en Omnicom en in-house rollen in tech, leisure en hospitality.">Wayfinder was founded in 2023 by Matthew Rose, a brand strategist with more than twelve years across WPP, Publicis Groupe and Omnicom agencies and in-house roles in tech, leisure and hospitality.</p>
+      <p class="clients" data-nl="Eerdere klanten zijn onder meer McDonald’s, Alibaba / HEMA, Disney, Samsung, adidas en Philips.">Past clients include McDonald’s, Alibaba / HEMA, Disney, Samsung, adidas and Philips.</p>
+      <p data-nl="Projecten worden bemenst vanuit een netwerk van strategen, designers, copywriters en AI-bouwers, op maat van de opdracht.">Projects are staffed from a network of strategists, designers, copywriters and AI builders, sized to the job.</p>
     </div>
   </section>
 
   <section id="contact" class="contact">
-    <h2>Tell us what you’re working on.</h2>
+    <h2 data-nl="Vertel ons waar je mee bezig bent.">Tell us what you’re working on.</h2>
     <a class="mail" href="mailto:hello@wayfinderconsult.xyz">hello@wayfinderconsult.xyz</a>
   </section>
 </main>
@@ -525,6 +559,50 @@ footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;fle
   function stop(){running=false;cancelAnimationFrame(raf)}
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){es[0].isIntersecting?start():stop()}).observe(svg)}else start();
   document.addEventListener('visibilitychange',function(){document.hidden?stop():start()});
+})();
+</script>
+<script>
+/* Theme and language preferences. Both fall back to the visitor's own
+   settings and are remembered per browser where storage is available. */
+(function(){
+  var root=document.documentElement, store={
+    get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},
+    set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  };
+
+  // --- theme ---
+  var tbtn=document.querySelector('.theme');
+  var saved=store.get('wf-theme');
+  if(saved==='dark'||saved==='light') root.setAttribute('data-theme',saved);
+  function isDark(){
+    var a=root.getAttribute('data-theme');
+    if(a) return a==='dark';
+    return window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  if(tbtn) tbtn.onclick=function(){
+    var next=isDark()?'light':'dark';
+    root.setAttribute('data-theme',next); store.set('wf-theme',next);
+  };
+
+  // --- language ---
+  var btns=[].slice.call(document.querySelectorAll('.lang button')),
+      nodes=[].slice.call(document.querySelectorAll('[data-nl]')),
+      titles={en:'Wayfinder — Build creative systems', nl:'Wayfinder — Bouw creatieve systemen'};
+  nodes.forEach(function(el){el.dataset.en=el.innerHTML});
+  function setLang(l,remember){
+    root.setAttribute('lang',l);
+    nodes.forEach(function(el){el.innerHTML = l==='nl' ? el.dataset.nl : el.dataset.en});
+    document.title=titles[l];
+    btns.forEach(function(b){
+      var on=b.dataset.lang===l;
+      b.classList.toggle('on',on); b.setAttribute('aria-pressed',on);
+    });
+    if(remember) store.set('wf-lang',l);
+  }
+  var lang=store.get('wf-lang');
+  if(lang!=='nl'&&lang!=='en') lang=(navigator.language||'en').toLowerCase().indexOf('nl')===0?'nl':'en';
+  setLang(lang,false);
+  btns.forEach(function(b){b.onclick=function(){setLang(b.dataset.lang,true)}});
 })();
 </script>
 </body>
