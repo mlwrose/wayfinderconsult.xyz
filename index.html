@@ -73,7 +73,11 @@ h2{font-weight:800;font-stretch:118%;font-size:clamp(28px,3vw,40px);letter-spaci
 @media (max-width:560px){.services li{grid-template-columns:1fr;gap:6px}}
 
 .venture{background:var(--ink);color:var(--paper);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:5fr 6fr;gap:clamp(28px,4vw,56px);align-items:center}
-.vtext .btn{margin-top:28px}
+.vtext .btn{margin-top:0}
+.vtext p+p{margin-top:14px}
+.vlinks{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,3vw,32px);margin-top:30px}
+.ig{font-size:16px;font-weight:600;text-decoration:none;border-bottom:2px solid var(--brass);padding-bottom:3px}
+.ig:hover{color:var(--brass)}
 .venture .name{font-weight:900;font-stretch:125%;font-size:clamp(48px,8vw,120px);line-height:.85;letter-spacing:-.04em;margin:0 0 20px}
 .venture p{margin:0;max-width:44ch}
 .venture .btn{border-color:var(--paper)}
@@ -85,7 +89,7 @@ h2{font-weight:800;font-stretch:118%;font-size:clamp(28px,3vw,40px);letter-spaci
 .venture .gallery{--g-ink:var(--paper);--g-bg:var(--ink);margin:0}
 .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border:1px solid color-mix(in srgb,var(--g-ink) 30%,transparent)}
 .track::-webkit-scrollbar{display:none}
-.shot{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:16/9;border:0;padding:0;margin:0;background:none;cursor:zoom-in;color:inherit;font:inherit;position:relative;overflow:hidden}
+.shot{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:var(--ar,16/9);border:0;padding:0;margin:0;background:none;cursor:zoom-in;color:inherit;font:inherit;position:relative;overflow:hidden}
 .shot img{width:100%;height:100%;object-fit:cover;display:block}
 .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;line-height:1.4;letter-spacing:.04em;color:color-mix(in srgb,var(--g-ink) 60%,transparent);
   background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--g-ink) 7%,transparent) 0 1px,transparent 1px 12px),color-mix(in srgb,var(--g-ink) 4%,var(--g-bg))}
@@ -104,8 +108,9 @@ h2{font-weight:800;font-stretch:118%;font-size:clamp(28px,3vw,40px);letter-spaci
 .lb-close{background:none;border:1px solid #ECECE7;color:inherit;font:inherit;padding:8px 14px;cursor:pointer}
 .lb-stage{flex:1;display:flex;align-items:center;gap:12px;min-height:0}
 .lb-view{flex:1;height:100%;display:flex;align-items:center;justify-content:center;min-width:0}
-.lb-view .frame{width:min(100%,calc((100vh - 160px) * 16 / 9));aspect-ratio:16/9;position:relative;border:1px solid rgba(236,236,231,.25)}
-.lb-view .frame img{width:100%;height:100%;object-fit:contain;display:block}
+.lb-view .frame{position:relative;display:flex;max-width:100%;max-height:100%;border:1px solid rgba(236,236,231,.25)}
+.lb-view .frame.is-ph{width:min(100%,calc((100vh - 160px) * 16 / 9));aspect-ratio:16/9}
+.lb-view .frame img{max-width:100%;max-height:calc(100vh - 150px);width:auto;height:auto;object-fit:contain;display:block}
 .lb-view .ph{--g-ink:#ECECE7;--g-bg:#141415;font-size:16px}
 .lb-arrow{background:none;border:1px solid rgba(236,236,231,.4);color:inherit;font-size:22px;width:48px;height:48px;cursor:pointer;flex:none}
 .lb-arrow:hover{border-color:#ECECE7}
@@ -210,22 +215,23 @@ footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;fle
       <div class="vtext">
         <p class="tag">Wayfinder venture</p>
         <p class="name">POP DROP</p>
-        <p>A novelty photo booth for events in the Netherlands. Guests step in, something unexpected happens, and everyone walks away with a print. Designed, branded and built end to end. Launching November&nbsp;2026.</p>
-        <a class="btn" href="https://popdrop.photos">Visit popdrop.photos</a>
+        <p>A novelty photo booth for events in the Netherlands. Guests step in, the booth remixes them into something they weren&rsquo;t expecting, and a print drops out seconds later. No operator in the room.</p>
+        <p>Built end to end as a Wayfinder venture: the name and brand, the cabinet, the generative pipeline that runs it, and the booking side behind it. Launching November&nbsp;2026.</p>
+        <div class="vlinks">
+          <a class="btn" href="https://popdrop.photos">Visit popdrop.photos</a>
+          <a class="ig" href="https://www.instagram.com/popdrop.photos/" target="_blank" rel="noopener">Follow on Instagram</a>
+        </div>
       </div>
-      <div class="gallery" data-name="POP DROP">
+      <div class="gallery" data-name="POP DROP" style="--ar:4/5">
         <div class="track">
           <button class="shot" type="button" data-caption="POP DROP" aria-label="Enlarge POP DROP image 1">
-            <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">POP DROP<br>Image 1</span>
+            <img src="img/popdrop-1.webp" alt="The POP DROP booth in a brick-walled venue, a guest stepping out while four people look at a print." loading="lazy" width="1200" height="1500">
           </button>
           <button class="shot" type="button" data-caption="POP DROP" aria-label="Enlarge POP DROP image 2">
-            <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">POP DROP<br>Image 2</span>
+            <img src="img/popdrop-2.webp" alt="A guest's face split down the middle: half photograph, half felt puppet version of himself." loading="lazy" width="1200" height="1500">
           </button>
           <button class="shot" type="button" data-caption="POP DROP" aria-label="Enlarge POP DROP image 3">
-            <!-- Replace the span with: <img src="..." alt="..."> -->
-            <span class="ph">POP DROP<br>Image 3</span>
+            <img src="img/popdrop-3.webp" alt="A POP DROP poster reading Step in. Pop. Take it home., taped to a glass-block wall." loading="lazy" width="1200" height="1500">
           </button>
         </div>
         <div class="gnav">
@@ -427,6 +433,7 @@ footer{border-top:1px solid var(--rule);padding-block:24px 32px;display:flex;fle
   function render(){
     var s=items[cur]; frame.innerHTML='';
     var img=s.querySelector('img');
+    frame.classList.toggle('is-ph',!img);
     frame.appendChild((img||s.querySelector('.ph')).cloneNode(true));
     cap.textContent=s.dataset.caption+'  \u00b7  '+(cur+1)+' / '+items.length;
   }
